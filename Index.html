@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17152b">
+<meta name="description" content="One click, one surprise. Discover tiny facts, nostalgic memories, short stories and little ideas.">
+<title>Little Time Machine — Random Discoveries</title>
+<style>
+:root{--bg:#11101e;--panel:#1d1b31;--text:#f7f4ff;--muted:#c1bdd8;--accent:#b5a4ff;--line:#37334f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#30264b 0%,#17152a 42%,#10101b 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+main{width:min(920px,100%);margin:auto;padding:24px 17px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:800;letter-spacing:.2px}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 11px;color:var(--muted);font-size:12px}
+.hero{text-align:center;padding:48px 0 26px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800}.hero h1{font-size:clamp(38px,8vw,70px);line-height:1.02;letter-spacing:-2px;margin:13px 0}.hero p{color:var(--muted);font-size:16px;line-height:1.6;max-width:520px;margin:0 auto}
+.categories{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:24px 0}.cat{border:1px solid var(--line);background:#211e37;color:var(--text);padding:10px 14px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer}.cat.active,.cat:hover{background:var(--accent);color:#1b1531;border-color:var(--accent)}
+.card{border:1px solid #45405f;background:linear-gradient(145deg,rgba(48,42,76,.96),rgba(26,25,44,.97));border-radius:28px;overflow:hidden;box-shadow:0 20px 70px #0003}.art{min-height:180px;display:grid;place-items:center;background:linear-gradient(135deg,#d9b4a7,#8b80b7 55%,#4a527f);font-size:clamp(66px,14vw,100px);position:relative}.art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#19172b66,transparent 65%)}.art span{position:relative;z-index:1;filter:drop-shadow(0 8px 14px #19152a55)}
+.content{padding:25px clamp(18px,5vw,38px) 28px}.tag{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.content h2{font-size:clamp(24px,5vw,34px);line-height:1.2;margin:11px 0}.content p{font-size:17px;line-height:1.8;color:#e1ddef;white-space:pre-line;margin:0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{border:0;border-radius:14px;padding:13px 18px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--accent);color:#1a1530;flex:1}.secondary{background:#302b49;color:var(--text);border:1px solid #51496e}.btn:focus-visible,.cat:focus-visible{outline:3px solid white;outline-offset:3px}.bottom{text-align:center;color:var(--muted);font-size:13px;margin:22px 0}.bottom button{background:none;border:0;color:var(--accent);font:inherit;cursor:pointer;text-decoration:underline}.saved{margin-top:28px;border-top:1px solid var(--line);padding-top:20px}.saved h3{font-size:15px}.saved-list{display:grid;gap:8px}.saved-item{background:#1d1b31;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--muted);font-size:14px}.saved-item strong{display:block;color:var(--text);margin-bottom:4px}.tiny{text-align:center;color:#8d88a8;font-size:12px;margin-top:28px}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><div class="brand">✦ Little Time Machine</div><div class="pill">A tiny escape from the ordinary</div></div>
+  <header class="hero"><div class="eyebrow">Your daily dose of wonder</div><h1>Remember when?</h1><p>One click. One surprise. Maybe a new fact, a forgotten feeling, or a story that stays with you.</p></header>
+  <nav class="categories" aria-label="Choose a category">
+    <button class="cat active" data-cat="all">🎲 Surprise me</button><button class="cat" data-cat="nostalgia">🧸 Nostalgia</button><button class="cat" data-cat="facts">🧠 Random facts</button><button class="cat" data-cat="stories">📖 Tiny stories</button><button class="cat" data-cat="ideas">✨ Try something</button>
+  </nav>
+  <section class="card" aria-live="polite">
+    <div class="art" id="art"><span id="emoji">🌇</span></div>
+    <div class="content"><div class="tag" id="tag">A MEMORY FROM ANOTHER TIME</div><h2 id="title">The evening power cut</h2><p id="body">The fan slows down. The TV goes quiet. Someone brings a candle, and suddenly the whole family is in one room, talking without rushing anywhere.</p>
+      <div class="actions"><button class="btn primary" id="next">↻ Give me another</button><button class="btn secondary" id="save">♡ Save this</button><button class="btn secondary" id="share">↗ Share</button></div>
+    </div>
+  </section>
+  <div class="bottom">No account needed. Just curiosity. <button id="surprise">Surprise me again</button></div>
+  <section class="saved"><h3>♡ Your saved discoveries</h3><div class="saved-list" id="savedList"><div class="saved-item">Save a discovery and it will appear here on this device.</div></div></section>
+  <div class="tiny">Made for curious minds • Discoveries are selected from a small built-in collection.</div>
+</main>
+<script>
+const items=[
+{cat:"nostalgia",emoji:"🌇",title:"The evening power cut",tag:"A MEMORY FROM ANOTHER TIME",body:"The fan slows down. The TV goes quiet. Someone brings a candle, and suddenly the whole family is in one room, talking without rushing anywhere."},
+{cat:"nostalgia",emoji:"🏏",title:"One last over before dinner",tag:"CHILDHOOD NOSTALGIA",body:"The street becomes a cricket ground. A brick is the wicket, the rules change every five minutes, and everyone begs for just one more over when someone calls them home."},
+{cat:"nostalgia",emoji:"📼",title:"The magic of an old song",tag:"A LITTLE TIME TRAVEL",body:"A familiar tune comes from an old radio or cassette player. For a moment, you are back in a room you haven't seen for years, surrounded by people you miss."},
+{cat:"nostalgia",emoji:"🌧️",title:"Rain meant a different kind of freedom",tag:"A MEMORY TO KEEP",body:"The smell of wet earth, paper boats in the roadside water, and watching the rain from a doorway. Nothing important had to happen for the day to feel special."},
+{cat:"nostalgia",emoji:"🍬",title:"The treat from the corner shop",tag:"SMALL THINGS, BIG MEMORIES",body:"A few coins in your pocket, a walk to the local shop, and the impossible task of choosing just one sweet. Somehow, it felt like a whole adventure."},
+{cat:"facts",emoji:"🐙",title:"An animal with three hearts",tag:"RANDOM FACT",body:"An octopus has three hearts. Two pump blood to the gills, while the third pumps it to the rest of the body."},
+{cat:"facts",emoji:"🌌",title:"Looking up is looking back",tag:"SPACE FACT",body:"Sunlight takes about 8 minutes and 20 seconds to reach Earth. When you see the Sun, you see it as it was a little over eight minutes ago."},
+{cat:"facts",emoji:"🦋",title:"Butterflies taste with their feet",tag:"NATURE IS WEIRD",body:"Butterflies have taste sensors on their feet, helping them identify plants. Nature has some wonderfully unexpected designs."},
+{cat:"facts",emoji:"🌳",title:"Trees can communicate underground",tag:"NATURE FACT",body:"Plants can exchange chemical signals and interact with soil fungi. Scientists are still studying how these relationships work in different ecosystems."},
+{cat:"facts",emoji:"🪐",title:"A day longer than a year",tag:"SPACE FACT",body:"Venus rotates so slowly that one rotation takes longer than one orbit around the Sun. Its rotation and orbit make its day-year comparison unusual."},
+{cat:"stories",emoji:"🕯️",title:"The window that stayed lit",tag:"A TINY FICTIONAL STORY",body:"Every night, a little lamp glowed in the house at the end of the lane. Nobody knew who lived there. One rainy evening, a lost child followed its light—and found a warm meal, a dry blanket, and someone who had been waiting to help."},
+{cat:"stories",emoji:"📮",title:"A letter to tomorrow",tag:"A TINY FICTIONAL STORY",body:"Mira wrote one sentence on a scrap of paper: “I hope we made it.” She tucked it inside her favourite book. Years later, on a difficult day, she found it—and realised she had made it through every day that once felt impossible."},
+{cat:"stories",emoji:"🚂",title:"The last seat on the train",tag:"A TINY FICTIONAL STORY",body:"An old man offered his window seat to a tired student. They spoke for only ten minutes. Before leaving, he said, “Be kind when you can. You never know which small thing someone will remember.” The student carried that sentence for years."},
+{cat:"ideas",emoji:"📷",title:"Take a photo of an ordinary thing",tag:"A SMALL ADVENTURE",body:"Photograph something you usually ignore: a window, an old sign, a tree near your home. Try to make it look beautiful. Ordinary places often hold the best details."},
+{cat:"ideas",emoji:"☎️",title:"Call someone from your past",tag:"A GENTLE NUDGE",body:"Think of someone you haven't spoken to in a while. Send a simple hello, share a memory, or ask how they are. No big reason needed."},
+{cat:"ideas",emoji:"🌙",title:"Look at the sky for two minutes",tag:"A TINY RESET",body:"Put your phone down, step outside if it's safe, and look at the sky. Notice the colour, clouds, sounds, and how the world keeps moving without asking you to hurry."},
+{cat:"ideas",emoji:"✍️",title:"Write a note to your future self",tag:"A LITTLE TIME CAPSULE",body:"Write down what matters to you today, what you are worried about, and one thing you hope for. Save it and read it again in six months."}
+];
+let current=null, chosen="all";
+const $=id=>document.getElementById(id);
+function pick(){let pool=items.filter(x=>chosen==="all"||x.cat===chosen);let options=pool.filter(x=>x!==current);current=options[Math.floor(Math.random()*options.length)]||pool[0];$("emoji").textContent=current.emoji;$("title").textContent=current.title;$("tag").textContent=current.tag;$("body").textContent=current.body;$("save").textContent="♡ Save this"}
+function getSaved(){try{return JSON.parse(localStorage.getItem("ltm-saved")||"[]")}catch(e){return []}}
+function renderSaved(){const list=$("savedList"),saved=getSaved();list.innerHTML="";if(!saved.length){list.innerHTML='<div class="saved-item">Save a discovery and it will appear here on this device.</div>';return}saved.forEach((x,i)=>{let d=document.createElement("div");d.className="saved-item";let s=document.createElement("strong");s.textContent=x.emoji+" "+x.title;let p=document.createElement("span");p.textContent=x.body;d.append(s,p);list.append(d)})}
+document.querySelectorAll(".cat").forEach(b=>b.addEventListener("click",()=>{chosen=b.dataset.cat;document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===b));pick()}));
+$("next").addEventListener("click",pick);$("surprise").addEventListener("click",pick);
+$("save").addEventListener("click",()=>{let saved=getSaved();if(!saved.some(x=>x.title===current.title)){saved.unshift(current);localStorage.setItem("ltm-saved",JSON.stringify(saved.slice(0,30)));renderSaved();$("save").textContent="♥ Saved!"}else $("save").textContent="♥ Already saved"});
+$("share").addEventListener("click",async()=>{let text=current.title+"\n\n"+current.body+"\n\nDiscover more on Little Time Machine.";try{if(navigator.share)await navigator.share({title:current.title,text});else if(navigator.clipboard){await navigator.clipboard.writeText(text);$("share").textContent="✓ Copied!"}else alert(text)}catch(e){}});
+renderSaved();pick();
+</script>
+</body>
+</html>
